@@ -3,31 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>劉家妤 | 個人作品工作室 Portfolio</title>
-    <script>
-        function toggleMenu() {
-            var links = document.getElementById('navLinks');
-            if (links.style.maxHeight === '300px') { links.style.maxHeight = '0px'; } 
-            else { links.style.maxHeight = '300px'; }
-        }
-        function filterGallery(cat) {
-            var btn = event.target;
-            var btns = document.querySelectorAll('.filter-btn');
-            btns.forEach(function(b){ b.classList.remove('active'); });
-            btn.classList.add('active');
-            var items = document.querySelectorAll('.gallery-item');
-            items.forEach(function(item){
-                if (cat === 'all' || item.getAttribute('data-category') === cat) { item.style.display = 'block'; } 
-                else { item.style.display = 'none'; }
-            });
-        }
-    </script>
+    <title>劉家妤 | 個人作品集 Portfolio</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang TC', Arial, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { color: #333; background-color: #fff; line-height: 1.7; }
+        /* 核心：精準讀取白岩石水彩紙紋理 */
+        body, .hero-right, .content-section { color: #333; background: url('IMG_5453.jpeg') repeat !important; background-size: 350px !important; line-height: 1.7; }
         a { text-decoration: none; color: inherit; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000; border-bottom: 1px solid #f0f0f0; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo { font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         .logo img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
         .nav-links { display: flex; list-style: none; gap: 30px; }
@@ -40,28 +23,27 @@
         .profile-pic img { width: 100%; height: 100%; object-fit: cover; }
         .hero-left h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
         .hero-left p { color: #cbd5e0; font-size: 1.05rem; }
-        .hero-right { width: 55%; background-color: #f7fafc; display: flex; flex-direction: column; justify-content: center; padding: 60px 6%; }
+        .hero-right { width: 55%; display: flex; flex-direction: column; justify-content: center; padding: 60px 6%; }
         .section-title { font-size: 1.6rem; color: #1a202c; margin-bottom: 30px; font-weight: bold; position: relative; }
         .section-title::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 30px; height: 3px; background-color: #b7791f; }
         .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .project-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #edf2f7; }
+        .project-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); padding: 25px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); }
         .project-icon { width: 40px; height: 40px; background: #fef3c7; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 1.2rem; color: #b7791f; }
-        .portfolio-section { padding: 100px 5%; background-color: #fff; }
+        .portfolio-section { padding: 100px 5%; background: transparent; }
         .portfolio-container { max-width: 1200px; margin: 0 auto; }
-        .filter-buttons { display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filter-btn { background: #f7fafc; border: 1px solid #e2e8f0; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; }
+        .filter-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-btn { background: rgba(255,255,255,0.8); border: 1px solid #e2e8f0; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
         .filter-btn.active, .filter-btn:hover { background: #b7791f; color: #fff; border-color: #b7791f; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .gallery-item { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #edf2f7; }
-        .gallery-img { width: 100%; height: 200px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #a0aec0; position: relative; }
+        .gallery-item { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+        .gallery-img { width: 100%; height: 200px; background-color: rgba(226, 232, 240, 0.4); display: flex; align-items: center; justify-content: center; color: #a0aec0; position: relative; }
         .gallery-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
         .gallery-info { padding: 20px; }
-        .content-section { padding: 100px 5%; background-color: #f7fafc; }
         .content-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .info-block h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2d3748; }
         .info-block p { color: #4a5568; margin-bottom: 25px; }
-        .cooperate-box { display: flex; justify-content: space-between; align-items: center; background: #fdfbf7; border-radius: 16px; padding: 50px 6%; border: 1px solid #f3ebd9; margin-top: 60px; width: 100%; }
-        .cta-button { display: inline-block; background: #d69e2e; color: #fff; padding: 12px 40px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; }
+        .cooperate-box { display: flex; justify-content: space-between; align-items: center; background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(5px); border-radius: 16px; padding: 50px 6%; border: 1px solid #f3ebd9; margin-top: 60px; width: 100%; }
+        .cta-button { display: inline-block; background: #d69e2e; color: #fff; padding: 12px 40px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 12px rgba(214,158,46,0.2); }
         .cooperate-logo { width: 160px; height: 160px; }
         .cooperate-logo img { width: 100%; height: 100%; object-fit: contain; }
         footer { text-align: center; padding: 30px; background: #1a202c; color: #a0aec0; font-size: 0.85rem; }
@@ -73,7 +55,7 @@
             .content-inner { grid-template-columns: 1fr; gap: 40px; }
             .cooperate-box { flex-direction: column; text-align: center; gap: 40px; }
             .menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 63px; left: 0; width: 100%; background: #fff; flex-direction: column; gap: 0; box-shadow: 0 10px 15px rgba(0,0,0,0.05); max-height: 0px; overflow: hidden; transition: max-height 0.3s ease-out; }
+            .nav-links { position: fixed; top: 63px; left: 0; width: 100%; background: #fff; flex-direction: column; gap: 0; box-shadow: 0 10px 15px rgba(0,0,0,0.05); display: none; }
             .nav-links li { width: 100%; text-align: center; border-bottom: 1px solid #f7fafc; }
             .nav-links a { display: block; padding: 15px 0; font-size: 1rem; }
         }
@@ -83,12 +65,14 @@
     <nav>
         <div class="logo"><img src="IMG_5429.png" alt="Logo"><span>BLUE BUNNY</span></div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" onclick="toggleMenu()">首頁</a></li>
-            <li><a href="#portfolio" onclick="toggleMenu()">精選作品</a></li>
-            <li><a href="#about" onclick="toggleMenu()">關於與服務</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">期待合作</a></li>
+            <li><a href="#home" onclick="document.getElementById('navLinks').style.display='none'">首頁</a></li>
+            <li><a href="#portfolio" onclick="document.getElementById('navLinks').style.display='none'">精選作品</a></li>
+            <li><a href="#about" onclick="document.getElementById('navLinks').style.display='none'">關於與服務</a></li>
+            <li><a href="#contact" onclick="document.getElementById('navLinks').style.display='none'">期待合作</a></li>
         </ul>
-        <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="menu-toggle" onclick="var m=document.getElementById('navLinks'); if(m.style.display==='block'){m.style.display='none'}else{m.style.display='block'}">
+            <span></span><span></span><span></span>
+        </div>
     </nav>
 
     <div class="hero-section" id="home">
@@ -108,25 +92,26 @@
         </div>
     </div>
 
+    <!-- 2. 精選作品分類區（已同步更新按鈕與卡片文案，修正簡體字） -->
     <section class="portfolio-section" id="portfolio">
         <div class="portfolio-container">
             <h2 class="section-title">精選作品</h2>
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterGallery('all')">全部作品</button>
-                <button class="filter-btn" onclick="filterGallery('brand')">品牌設計</button>
-                <button class="filter-btn" onclick="filterGallery('web')">電商平面美學</button>
-                <button class="filter-btn" onclick="filterGallery('social')">系統化視覺整合</button>
+                <button class="filter-btn active" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>i.style.display='block')">全部作品</button>
+                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='brand'){i.style.display='block'}else{i.style.display='none'}})">品牌設計</button>
+                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='social'){i.style.display='block'}else{i.style.display='none'}})">電商平面美學</button>
+                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='system'){i.style.display='block'}else{i.style.display='none'}})">系統化視覺整合</button>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" data-category="brand">
                     <div class="gallery-img"><img src="IMG_5429.png" alt="作品"></div>
                     <div class="gallery-info"><h4>Blue Bunny 品牌設計</h4><p>極簡風格幾何兔子標誌與標準字規範</p></div>
                 </div>
-                <div class="gallery-item" data-category="web">
-                    <div class="gallery-img"><span>【等待放置電商平面美學】</span></div>
-                    <div class="gallery-info"><h4>電商賣場商品圖設計</h4><p>兼顧視覺與資訊的行銷式排版</p></div>
-                </div>
                 <div class="gallery-item" data-category="social">
+                    <div class="gallery-img"><span>【等待放置電商平面美學】</span></div>
+                    <div class="gallery-info"><h4>電商行銷視覺美學展現</h4><p>打造整體色調一致的商品落地頁與社群圖貼</p></div>
+                </div>
+                <div class="gallery-item" data-category="system">
                     <div class="gallery-img"><span>【等待放置系統化視覺整合】</span></div>
                     <div class="gallery-info"><h4>創造品牌型態之視覺美學</h4><p>打造整體色調一致的客製化整合風格</p></div>
                 </div>
@@ -134,6 +119,7 @@
         </div>
     </section>
 
+    <!-- 3. 關於與核心經歷（完美融合你修改後的最新精彩資歷） -->
     <div class="content-section" id="about">
         <div class="content-inner">
             <div class="info-block">
@@ -144,13 +130,14 @@
                 <h2 class="section-title">核心服務與經歷</h2>
                 <h3>✨ 介面美學與品牌規劃</h3><p>2024 - 自由接案，已成功協助超過 20 家中小企業整合品牌風格。</p>
                 <h3>✨ 行銷式商業設計</h3><p>2018 - 2025 曾任電商公司商業美學設計師。</p>
-                <h4>✨ 完整設計落地執行</h3><p>2016 - 2018 曾任印刷公司平面輸出設計師。</p>
+                <h3>✨ 完整設計落地執行</h3><p>2016 - 2018 曾任印刷公司平面輸出設計師。</p>
             </div>
         </div>
         <div class="cooperate-box" id="contact">
             <div>
                 <h2 style="font-size: 2rem; margin-bottom: 20px;">期待與您合作！</h2>
-                <a href="https://line.me" target="_blank" class="cta-button">聯絡我 0970-911-285</a>
+                <!-- 撥號點擊按鈕 -->
+                <a href="tel:0970911285" class="cta-button">聯絡我 0970-911-285</a>
                 <p style="color:#4a5568; font-size:0.95rem;">LINE：your_line_id | Mail：your@email.com</p>
             </div>
             <div class="cooperate-logo"><img src="IMG_5429.png" alt="Bunny Logo"></div>
