@@ -32,23 +32,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
+            padding: 15px 10%;
             z-index: 1000;
             border-bottom: 1px solid #eee;
         }
         .logo {
             font-weight: bold;
             font-size: 1.2rem;
-            color: #1e3a8a; /* 經典藍色 */
+            color: #1a365d;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .logo-placeholder {
-            width: 30px;
-            height: 30px;
+        .logo img {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            background: #1e3a8a;
+            object-fit: cover;
         }
         .nav-links {
             display: flex;
@@ -56,12 +56,12 @@
             gap: 30px;
         }
         .nav-links a:hover {
-            color: #1e3a8a;
+            color: #1a365d;
         }
 
         /* 滿版區塊設定 */
         section {
-            padding: 100px 10%;
+            padding: 120px 10% 80px 10%;
             min-height: 80vh;
             display: flex;
             flex-direction: column;
@@ -80,7 +80,7 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background-color: #1e3a8a;
+            background-color: #1a365d;
         }
 
         /* 1. 首頁區塊 */
@@ -89,46 +89,50 @@
             align-items: center;
             background: white;
         }
-        .hero-logo {
-            width: 150px;
-            height: 150px;
+        .hero-logo-container {
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            background: #1e3a8a;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
+        }
+        .hero-logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         #home h1 {
             font-size: 2.5rem;
             margin-bottom: 15px;
             letter-spacing: 2px;
+            color: #1a365d;
         }
         #home p {
             color: #666;
             font-size: 1.1rem;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         .cta-btn {
-            background-color: #1e3a8a;
+            background-color: #1a365d;
             color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 12px 35px;
+            border-radius: 25px;
             font-weight: bold;
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(26, 54, 93, 0.2);
         }
         .cta-btn:hover {
             background-color: #111827;
+            transform: translateY(-2px);
         }
 
         /* 2. 經歷區塊 */
         #experience {
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
         }
         .timeline {
-            border-left: 2px solid #1e3a8a;
+            border-left: 2px solid #1a365d;
             padding-left: 20px;
             margin-left: 10px;
         }
@@ -144,11 +148,11 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #1e3a8a;
+            background: #1a365d;
         }
         .time {
             font-weight: bold;
-            color: #1e3a8a;
+            color: #1a365d;
         }
 
         /* 3. 服務項目區塊 */
@@ -163,25 +167,25 @@
         }
         .service-card {
             padding: 30px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #eee;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
             transition: 0.3s;
         }
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
         .price {
             font-size: 1.3rem;
-            color: #1e3a8a;
+            color: #1a365d;
             font-weight: bold;
             margin-top: 15px;
         }
 
         /* 4. 聯絡方式區塊 */
         #contact {
-            background-color: #111827;
+            background-color: #0f172a;
             color: white;
         }
         #contact h2::after {
@@ -194,16 +198,17 @@
             max-width: 500px;
         }
         .contact-info a {
-            color: #60a5fa;
+            color: #38bdf8;
         }
         
         /* 頁尾 */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #0b0f19;
-            color: #666;
+            padding: 25px;
+            background: #020617;
+            color: #64748b;
             font-size: 0.8rem;
+            border-top: 1px solid #1e293b;
         }
     </style>
 </head>
@@ -212,7 +217,8 @@
     <!-- 導覽列 -->
     <nav>
         <div class="logo">
-            <div class="logo-placeholder"></div>
+            <!-- 已自動對應你的圖片名稱 -->
+            <img src="IMG_5429.png" alt="Logo">
             <span>BLUE BUNNY</span>
         </div>
         <ul class="nav-links">
@@ -225,10 +231,12 @@
 
     <!-- 1. 首頁 -->
     <section id="home">
-        <!-- 這裡可以替換成你的兔子 Logo 圖片 -->
-        <div class="hero-logo">【請放置兔子Logo】</div>
-        <h1>哈囉，我是設計師</h1>
-        <p>專注於極簡美學與視覺傳達，用設計為品牌賦予靈魂。</p>
+        <div class="hero-logo-container">
+            <!-- 已自動對應你的圖片名稱 -->
+            <img src="IMG_5429.png" alt="Hero Logo">
+        </div>
+        <h1>哈囉，我是兔子設計師</h1>
+        <p>專注於商品美學與視覺傳達，用設計為品牌賦予靈魂。</p>
         <a href="#services" class="cta-btn">查看服務項目</a>
     </section>
 
@@ -239,12 +247,12 @@
             <div class="timeline-item">
                 <div class="time">2024 - 至今</div>
                 <h3>獨立接案設計師</h3>
-                <p>協助超過 20 家中小企業建立品牌識別與官方網站設計。</p>
+                <p>協助超過 20 家中小電商建立商品識別與變現設計。</p>
             </div>
             <div class="timeline-item">
                 <div class="time">2021 - 2024</div>
                 <h3>視覺設計工作室 / 資深設計師</h3>
-                <p>負責平面視覺物產出、主視覺規劃及團隊專案時程管理。</p>
+                <p>負責平面視覺物產出、主視覺規劃及系列化商品管理。</p>
             </div>
         </div>
     </section>
@@ -256,16 +264,16 @@
             <div class="service-card">
                 <h3>品牌標誌設計</h3>
                 <p>包含 Logo 設計、標準字、配色規範及應用範例。</p>
-                <div class="price">NT$ 15,000 起</div>
+                <div class="price">NT$ 500 起</div>
             </div>
             <div class="service-card">
-                <h3>一頁式網頁設計</h3>
-                <p>適合個人品牌、產品落地頁，含 RWD 響應式排版。</p>
-                <div class="price">NT$ 20,000 起</div>
+                <h3>單一商品平面/組圖設計</h3>
+                <p>適合個人電商、產品落地，含變現響應式排版。</p>
+                <div class="price">NT$ 500 起</div>
             </div>
             <div class="service-card">
-                <h3>平面視覺設計</h3>
-                <p>海報、名片、社群媒體圖貼文設計（單件或包月）。</p>
+                <h3>系統化電商平面設計</h3>
+                <p>統一設計語言、建立設計歸納商評品系列（單件或包月）。</p>
                 <div class="price">NT$ 3,000 起</div>
             </div>
         </div>
