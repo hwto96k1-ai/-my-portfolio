@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>劉家妤 | 個人作品集 Portfolio</title>
+    <script>
+        function toggleMenu() {
+            var links = document.getElementById('navLinks');
+            if (links.style.maxHeight === '300px') { links.style.maxHeight = '0px'; } 
+            else { links.style.maxHeight = '300px'; }
+        }
+        function filterGallery(cat) {
+            var btn = event.target;
+            var btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(function(b){ b.classList.remove('active'); });
+            btn.classList.add('active');
+            var items = document.querySelectorAll('.gallery-item');
+            items.forEach(function(item){
+                if (cat === 'all' || item.getAttribute('data-category') === cat) { item.style.display = 'block'; } 
+                else { item.style.display = 'none'; }
+            });
+        }
+    </script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang TC', Arial, sans-serif; }
         html { scroll-behavior: smooth; }
@@ -55,15 +73,13 @@
             .content-inner { grid-template-columns: 1fr; gap: 40px; }
             .cooperate-box { flex-direction: column; text-align: center; gap: 40px; }
             .menu-toggle { display: flex; }
-            .nav-links { position: fixed; top: 63px; left: 0; width: 100%; background: #fff; flex-direction: column; gap: 0; box-shadow: 0 10px 15px rgba(0,0,0,0.05); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-            .nav-links.active { max-height: 300px; }
+            .nav-links { position: fixed; top: 63px; left: 0; width: 100%; background: #fff; flex-direction: column; gap: 0; box-shadow: 0 10px 15px rgba(0,0,0,0.05); max-height: 0px; overflow: hidden; transition: max-height 0.3s ease-out; }
             .nav-links li { width: 100%; text-align: center; border-bottom: 1px solid #f7fafc; }
             .nav-links a { display: block; padding: 15px 0; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo"><img src="IMG_5429.png" alt="Logo"><span>BLUE BUNNY</span></div>
         <ul class="nav-links" id="navLinks">
@@ -141,11 +157,5 @@
     </div>
 
     <footer>&copy; 2026 BLUE BUNNY Portfolio. All rights reserved.</footer>
-
-    <script>
-        function toggleMenu() {
-            if (window.innerWidth <= 900) {
-                document.getElementById('navLinks').classList.toggle('active');
-            }
-        }
-        function filterGallery(category) {
+</body>
+</html>
