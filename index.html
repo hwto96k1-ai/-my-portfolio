@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>兔兔設計工作室 | Portfolio</title>
+    <title>劉家妤 | 個人作品集 Portfolio</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'PingFang TC', 'Heiti TC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        /* 讓跳轉網頁時有平滑滾動的效果 */
+        html {
+            scroll-behavior: smooth;
         }
         body {
             color: #333;
@@ -47,6 +51,8 @@
             border-radius: 50%;
             object-fit: cover;
         }
+        
+        /* 電腦版選單 */
         .nav-links {
             display: flex;
             list-style: none;
@@ -59,14 +65,29 @@
         }
         .nav-links a:hover { color: #b7791f; }
 
-        /* 首頁非對稱式大雙欄布局 */
+        /* 手機版漢堡按鈕 (紅圈處) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #1a202c;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* 1. 首頁大雙欄布局 */
         .hero-section {
             min-height: 100vh;
             display: flex;
             padding-top: 65px;
         }
-
-        /* 左側：深色個人介紹區 */
         .hero-left {
             width: 45%;
             background-color: #2d3748;
@@ -101,16 +122,12 @@
             font-weight: 700;
             letter-spacing: 1px;
         }
-        .hero-left h1 span {
-            color: #e2e8f0;
-        }
         .hero-left p {
             color: #cbd5e0;
             font-size: 1.05rem;
             margin-bottom: 20px;
         }
 
-        /* 右側：精選專案圖卡區 */
         .hero-right {
             width: 55%;
             background-color: #f7fafc;
@@ -146,12 +163,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             border: 1px solid #edf2f7;
-            transition: 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.05);
-            border-color: #e2e8f0;
         }
         .project-icon {
             width: 40px;
@@ -165,37 +176,103 @@
             font-size: 1.2rem;
             color: #b7791f;
         }
-        .project-card h3 {
-            font-size: 1.15rem;
-            color: #1a202c;
-            margin-bottom: 8px;
-        }
-        .project-card p {
-            color: #718096;
-            font-size: 0.9rem;
-        }
+        .project-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+        .project-card p { color: #718096; font-size: 0.9rem; }
 
-        /* 通用下部區塊 */
-        .content-section {
-            padding: 100px 10%;
+        /* 2. 全新作品集分類展示區塊 */
+        .portfolio-section {
+            padding: 100px 5%;
+            background-color: #ffffff;
+        }
+        .portfolio-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        .content-grid {
+        /* 分類按鈕列 */
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #b7791f;
+            color: white;
+            border-color: #b7791f;
+        }
+        /* 作品網格 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .gallery-item {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .gallery-info {
+            padding: 20px;
+        }
+        .gallery-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+        .gallery-info p {
+            color: #718096;
+            font-size: 0.85rem;
+        }
+
+        /* 3. 關於與服務內容 */
+        .content-section {
+            padding: 100px 5%;
+            background-color: #f7fafc;
+        }
+        .content-inner {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            margin-top: 40px;
         }
-        .info-block h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #2d3748;
-        }
-        .info-block p {
-            color: #4a5568;
-            margin-bottom: 25px;
-        }
+        .info-block h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2d3748; }
+        .info-block p { color: #4a5568; margin-bottom: 25px; }
 
         /* 合作聯絡區塊 */
         .cooperate-box {
@@ -207,12 +284,9 @@
             padding: 50px 6%;
             border: 1px solid #f3ebd9;
             margin-top: 60px;
+            width: 100%;
         }
-        .cooperate-text h2 {
-            font-size: 2rem;
-            color: #1a202c;
-            margin-bottom: 20px;
-        }
+        .cooperate-text h2 { font-size: 2rem; color: #1a202c; margin-bottom: 20px; }
         .cta-button {
             display: inline-block;
             background: #d69e2e;
@@ -224,25 +298,11 @@
             transition: 0.3s;
         }
         .cta-button:hover { background: #b7791f; }
-        .contact-details {
-            color: #4a5568;
-            font-size: 0.95rem;
-        }
+        .contact-details { color: #4a5568; font-size: 0.95rem; }
         .contact-details p { margin-bottom: 5px; }
-        .contact-details a { color: #b7791f; font-weight: bold; }
-        
-        .cooperate-logo {
-            width: 160px;
-            height: 160px;
-            opacity: 0.9;
-        }
-        .cooperate-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+        .cooperate-logo { width: 160px; height: 160px; }
+        .cooperate-logo img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* 頁尾 */
         footer {
             text-align: center;
             padding: 30px;
@@ -251,91 +311,39 @@
             font-size: 0.85rem;
         }
 
+        /* 響應式調整：包含手機滿版與彈出選單設定 */
         @media (max-width: 900px) {
             .hero-section { flex-direction: column; }
-            .hero-left, .hero-right { width: 100%; padding: 40px 8%; }
+            .hero-left, .hero-right { width: 100%; padding: 60px 8%; }
             .project-grid { grid-template-columns: 1fr; }
-            .content-grid { grid-template-columns: 1fr; gap: 40px; }
+            .content-inner { grid-template-columns: 1fr; gap: 40px; }
             .cooperate-box { flex-direction: column; text-align: center; gap: 40px; }
-            .nav-links { display: none; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 導覽列 -->
-    <nav>
-        <div class="logo">
-            <!-- 黃圈：維持精緻兔子 Logo -->
-            <img src="IMG_5429.png" alt="Logo">
-            <span>BLUE BUNNY</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">首頁</a></li>
-            <li><a href="#about">關於與服務</a></li>
-            <li><a href="#contact">期待合作</a></li>
-        </ul>
-    </nav>
-
-    <!-- 首頁雙欄區塊 -->
-    <div class="hero-section" id="home">
-        <!-- 左側：個人品牌主視覺 -->
-        <div class="hero-left">
-            <div class="profile-container">
-                <div class="profile-pic">
-                    <!-- 紅圈：已為您成功替換成個人形象照 -->
-                    <img src="IMG_5445.png" alt="Profile">
-                </div>
-                <h1>你好，<br>我是劉家妤！</h1>
-                <p>專注於創造直覺與美感並存的視覺介面，用設計為品牌說故事。</p>
-            </div>
-        </div>
-
-        <!-- 右側：精選專案報價 -->
-        <div class="hero-right">
-            <h2 class="section-title">服務項目及報價</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-icon">🎨</div>
-                    <h3>品牌識別標誌設計</h3>
-                    <p>字體設計、配色規範及多場景應用。<br><b>NT$ 500 起</b></p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">💻</div>
-                    <h3>單商品平面美學</h3>
-                    <p>精緻且具備行銷響應式變現設計。<br><b>NT$ 800 起</b></p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">📱</div>
-                    <h3>電商系統化平面視覺設計</h3>
-                    <p>自定義風格型態、複數統整型精緻商品頁面。<br><b>依需求報價</b></p>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">📦</div>
-                    <h3>商業平面印刷包裝</h3>
-                    <p>名片、海報宣傳物及品牌外包裝貼紙與紙盒型態設計。<br><b>依需求報價</b></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 下半部：關於與服務內容 -->
-    <div class="content-section" id="about">
-        <div class="content-grid">
-            <div class="info-block">
-                <h2 class="section-title">關於我</h2>
-                <p style="margin-top:20px;">一位熱愛將複雜訊息「系統化」的視覺傳達設計師。深信優秀的設計不僅是視覺上的美觀，更是協助客戶提升品牌價值與營收的關鍵武器。</p>
-            </div>
-            <div class="info-block">
-                <h2 class="section-title">核心服務與經歷</h2>
-                <div style="margin-top:20px;">
-                    <h3>✨ 介面美學與品牌規劃</h3>
-                    <p>2024 - 自由接案，已成功協助超過 20 家中小電商翻新品牌形象。</p>
-                    <h3>✨ 完整設計落地執行</h3>
-                    <p>2018 - 2020 曾任印刷設計公司平面設計師，熟悉印刷與前端網頁規格。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 合作區塊：期待與您合作 -->
-        <div class="cooperate-box" id="contact">
+            
+            /* 手機版開啟漢堡選單圖標 */
+            .menu-toggle { display: flex; }
+            
+            /* 手機版覆蓋式導覽選單 */
+            .nav-links {
+                position: fixed;
+                top: 63px;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            .nav-links.active {
+                max-height: 300px;
+            }
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #f7fafc;
+            }
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
