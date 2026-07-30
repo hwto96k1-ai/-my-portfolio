@@ -17,19 +17,7 @@
         .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
         .menu-toggle span { width: 25px; height: 3px; background-color: #1a202c; border-radius: 2px; }
         .hero-section { min-height: 100vh; display: flex; padding-top: 65px; }
-        
-        /* 核心修改：左側區塊已完美指到你剛上傳的深藍絲絨緞面材質圖 */
-        .hero-left { 
-            width: 45%; 
-            background: url('IMG_5472.png') no-repeat center center !important; 
-            background-size: cover !important; 
-            color: #fff; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            padding: 60px 5%; 
-        }
-        
+        .hero-left { width: 45%; background: url('IMG_5472.png') no-repeat center center !important; background-size: cover !important; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 60px 5%; }
         .profile-pic { width: 200px; height: 250px; border-radius: 8px; margin-bottom: 30px; overflow: hidden; border: 2px solid #b7791f; }
         .profile-pic img { width: 100%; height: 100%; object-fit: cover; }
         .hero-left h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
@@ -42,14 +30,18 @@
         .project-icon { width: 40px; height: 40px; background: #fef3c7; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 1.2rem; color: #b7791f; }
         .portfolio-section { padding: 100px 5%; background: transparent; }
         .portfolio-container { max-width: 1200px; margin: 0 auto; }
-        .filter-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filter-btn { background: rgba(255,255,255,0.8); border: 1px solid #e2e8f0; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
-        .filter-btn.active, .filter-btn:hover { background: #b7791f; color: #fff; border-color: #b7791f; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .gallery-item { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
-        .gallery-img { width: 100%; height: 200px; background-color: rgba(226, 232, 240, 0.4); display: flex; align-items: center; justify-content: center; color: #a0aec0; position: relative; }
+        
+        /* 核心精簡優化：全新的首頁 3 大主項目預覽格子結構 */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .gallery-item { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.06); border-color: #b7791f; }
+        .gallery-img { width: 100%; height: 220px; background-color: rgba(226, 232, 240, 0.4); display: flex; align-items: center; justify-content: center; color: #a0aec0; position: relative; }
         .gallery-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
-        .gallery-info { padding: 20px; }
+        .gallery-info { padding: 25px; position: relative; }
+        
+        /*作品卡片內小按鈕*/
+        .view-more-link { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: #b7791f; font-weight: bold; text-decoration: none; border-bottom: 1px solid #b7791f; padding-bottom: 2px; }
+        
         .content-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .info-block h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2d3748; }
         .info-block p { color: #4a5568; margin-bottom: 25px; }
@@ -104,31 +96,44 @@
         </div>
     </div>
 
+    <!-- 2. 精選作品區（首頁僅保留三大分類預覽圖卡） -->
     <section class="portfolio-section" id="portfolio">
         <div class="portfolio-container">
-            <h2 class="section-title">精選作品</h2>
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>i.style.display='block')">全部作品</button>
-                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='brand'){i.style.display='block'}else{i.style.display='none'}})">品牌設計</button>
-                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='social'){i.style.display='block'}else{i.style.display='none'}})">電商平面美學</button>
-                <button class="filter-btn" onclick="var btns=document.querySelectorAll('.filter-btn'); btns.forEach(b=>b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.gallery-item').forEach(i=>{if(i.getAttribute('data-category')==='system'){i.style.display='block'}else{i.style.display='none'}})">系統化視覺整合</button>
-            </div>
+            <h2 class="section-title">精選作品分類</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="brand">
+                
+                <!-- 項目 1：品牌設計項目 -->
+                <div class="gallery-item">
                     <div class="gallery-img"><img src="IMG_5429.png" alt="作品"></div>
-                    <div class="gallery-info"><h4>Blue Bunny 品牌設計</h4><p>極簡風格幾何兔子標誌與標準字規範</p>
+                    <div class="gallery-info">
+                        <h4>品牌識別設計專區</h4>
+                        <p>極簡線條、VI 規範與商標美學建立。</p>
+                        <!-- 核心串聯：點擊跳轉到專屬大量展示頁面 -->
+                        <a href="brand.html" class="view-more-link">進入看全部作品 &rarr;</a>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="social">
-                    <div class="gallery-img"><span>【等待放置電商平面美學】</span></div>
-                    <div class="gallery-info"><h4>電商行銷視覺美學展現</h4><p>打造整體色調一致的商品落地頁與社群圖貼</p>
+                
+                <!-- 項目 2：電商平面美學 -->
+                <div class="gallery-item">
+                    <div class="gallery-img"><span>【電商設計大項目預覽圖】</span></div>
+                    <div class="gallery-info">
+                        <h4>電商平面美學專區</h4>
+                        <p>商業橫幅、社群包月圖文與風格排貼。</p>
+                        <a href="#" class="view-more-link">即將開放 &rarr;</a>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="system">
-                    <div class="gallery-img"><span>【等待放置系統化視覺整合】</span></div>
-                    <div class="gallery-info"><h4>創造品牌型態之視覺美學</h4><p>打造整體色調一致的客製化整合風格</p>
+                
+                <!-- 項目 3：系統化視覺整合 -->
+                <div class="gallery-item">
+                    <div class="gallery-item">
+                    <div class="gallery-img"><span>【系統化設計大項目預覽圖】</span></div>
+                    <div class="gallery-info">
+                        <h4>系統化視覺整合專區</h4>
+                        <p>客製化整合風格、跨平台介面形態美學。</p>
+                        <a href="#" class="meview-more-link" onclick="alert('專區建立中')">建立中 &rarr;</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -141,7 +146,7 @@
             </div>
             <div class="info-block">
                 <h2 class="section-title">核心服務與經歷</h2>
-                <h3>✨ 介面美學與品牌規劃</h3><p>2024 - 自由接案，已成功協助超過 20 家中小企業整合 brand 風格。</p>
+                <h3>✨ 介面美學與品牌規劃</h3><p>2024 - 自由接案，已成功協助超過 20 家中小企業整合品牌風格。</p>
                 <h3>✨ 行銷式商業設計</h3><p>2018 - 2025 曾任電商公司商業美學設計師。</p>
                 <h3>✨ 完整設計落地執行</h3><p>2016 - 2018 曾任印刷公司平面輸出設計師。</p>
             </div>
