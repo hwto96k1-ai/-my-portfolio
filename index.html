@@ -7,7 +7,6 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang TC', Arial, sans-serif; }
         html { scroll-behavior: smooth; }
-        /* 核心：精準讀取白岩石水彩紙紋理 */
         body, .hero-right, .content-section { color: #333; background: url('IMG_5453.jpeg') repeat !important; background-size: 350px !important; line-height: 1.7; }
         a { text-decoration: none; color: inherit; }
         nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
@@ -18,7 +17,19 @@
         .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
         .menu-toggle span { width: 25px; height: 3px; background-color: #1a202c; border-radius: 2px; }
         .hero-section { min-height: 100vh; display: flex; padding-top: 65px; }
-        .hero-left { width: 45%; background-color: #2d3748; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 60px 5%; }
+        
+        /* 核心修改：左側區塊已完美指到你剛上傳的深藍絲絨緞面材質圖 */
+        .hero-left { 
+            width: 45%; 
+            background: url('IMG_5472.png') no-repeat center center !important; 
+            background-size: cover !important; 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 60px 5%; 
+        }
+        
         .profile-pic { width: 200px; height: 250px; border-radius: 8px; margin-bottom: 30px; overflow: hidden; border: 2px solid #b7791f; }
         .profile-pic img { width: 100%; height: 100%; object-fit: cover; }
         .hero-left h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
@@ -43,17 +54,18 @@
         .info-block h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2d3748; }
         .info-block p { color: #4a5568; margin-bottom: 25px; }
         .cooperate-box { display: flex; justify-content: space-between; align-items: center; background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(5px); border-radius: 16px; padding: 50px 6%; border: 1px solid #f3ebd9; margin-top: 60px; width: 100%; }
-        .cta-button { display: inline-block; background: #d69e2e; color: #fff; padding: 12px 40px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 12px rgba(214,158,46,0.2); }
+        .cta-button { display: inline-block; background: #d69e2e; color: #fff; padding: 12px 40px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; text-align: center; }
         .cooperate-logo { width: 160px; height: 160px; }
         .cooperate-logo img { width: 100%; height: 100%; object-fit: contain; }
         footer { text-align: center; padding: 30px; background: #1a202c; color: #a0aec0; font-size: 0.85rem; }
 
         @media (max-width: 900px) {
             .hero-section { flex-direction: column; }
-            .hero-left, .hero-right { width: 100%; padding: 60px 8%; }
+            .hero-left, .hero-right { width: 100%; padding: 60px 20px; }
+            .portfolio-section, .content-section { padding: 80px 20px; }
             .project-grid { grid-template-columns: 1fr; }
             .content-inner { grid-template-columns: 1fr; gap: 40px; }
-            .cooperate-box { flex-direction: column; text-align: center; gap: 40px; }
+            .cooperate-box { flex-direction: column; text-align: center; gap: 40px; padding: 40px 20px; }
             .menu-toggle { display: flex; }
             .nav-links { position: fixed; top: 63px; left: 0; width: 100%; background: #fff; flex-direction: column; gap: 0; box-shadow: 0 10px 15px rgba(0,0,0,0.05); display: none; }
             .nav-links li { width: 100%; text-align: center; border-bottom: 1px solid #f7fafc; }
@@ -92,7 +104,6 @@
         </div>
     </div>
 
-    <!-- 2. 精選作品分類區（已同步更新按鈕與卡片文案，修正簡體字） -->
     <section class="portfolio-section" id="portfolio">
         <div class="portfolio-container">
             <h2 class="section-title">精選作品</h2>
@@ -105,30 +116,32 @@
             <div class="gallery-grid">
                 <div class="gallery-item" data-category="brand">
                     <div class="gallery-img"><img src="IMG_5429.png" alt="作品"></div>
-                    <div class="gallery-info"><h4>Blue Bunny 品牌設計</h4><p>極簡風格幾何兔子標誌與標準字規範</p></div>
+                    <div class="gallery-info"><h4>Blue Bunny 品牌設計</h4><p>極簡風格幾何兔子標誌與標準字規範</p>
+                    </div>
                 </div>
                 <div class="gallery-item" data-category="social">
                     <div class="gallery-img"><span>【等待放置電商平面美學】</span></div>
-                    <div class="gallery-info"><h4>電商行銷視覺美學展現</h4><p>打造整體色調一致的商品落地頁與社群圖貼</p></div>
+                    <div class="gallery-info"><h4>電商行銷視覺美學展現</h4><p>打造整體色調一致的商品落地頁與社群圖貼</p>
+                    </div>
                 </div>
                 <div class="gallery-item" data-category="system">
                     <div class="gallery-img"><span>【等待放置系統化視覺整合】</span></div>
-                    <div class="gallery-info"><h4>創造品牌型態之視覺美學</h4><p>打造整體色調一致的客製化整合風格</p></div>
+                    <div class="gallery-info"><h4>創造品牌型態之視覺美學</h4><p>打造整體色調一致的客製化整合風格</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. 關於與核心經歷（完美融合你修改後的最新精彩資歷） -->
     <div class="content-section" id="about">
         <div class="content-inner">
             <div class="info-block">
                 <h2 class="section-title">關於我</h2>
-                <p>一位熱愛將複雜訊息「簡化」的美學視覺設計師。深信優秀的設計不僅是視覺上的美觀，更是協助客戶提升品牌價值的關鍵武器。</p>
+                <p>一位熱愛將複雜訊息「簡化」的美學視覺設計師。深信優秀的設計傾聽品牌靈魂，更是協助客戶提升價值的核心武器。</p>
             </div>
             <div class="info-block">
                 <h2 class="section-title">核心服務與經歷</h2>
-                <h3>✨ 介面美學與品牌規劃</h3><p>2024 - 自由接案，已成功協助超過 20 家中小企業整合品牌風格。</p>
+                <h3>✨ 介面美學與品牌規劃</h3><p>2024 - 自由接案，已成功協助超過 20 家中小企業整合 brand 風格。</p>
                 <h3>✨ 行銷式商業設計</h3><p>2018 - 2025 曾任電商公司商業美學設計師。</p>
                 <h3>✨ 完整設計落地執行</h3><p>2016 - 2018 曾任印刷公司平面輸出設計師。</p>
             </div>
@@ -136,8 +149,7 @@
         <div class="cooperate-box" id="contact">
             <div>
                 <h2 style="font-size: 2rem; margin-bottom: 20px;">期待與您合作！</h2>
-                <!-- 撥號點擊按鈕 -->
-                <a href="tel:0970911285" class="cta-button">聯絡我 0970-911-285</a>
+                <a href="tel:0970911285" class="cta-button">聯絡我</a>
                 <p style="color:#4a5568; font-size:0.95rem;">LINE：your_line_id | Mail：your@email.com</p>
             </div>
             <div class="cooperate-logo"><img src="IMG_5429.png" alt="Bunny Logo"></div>
