@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌設計作品集 | 劉家妤</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang TC', Arial, sans-serif; }
+        body { color: #333; background: url('IMG_5453.jpeg') repeat; background-size: 350px; line-height: 1.7; padding: 40px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* 麵包屑導覽 */
+        .back-nav { margin-bottom: 30px; font-size: 0.9rem; color: #b7791f; font-weight: bold; }
+        .back-nav a { text-decoration: none; color: #4a5568; margin-right: 8px; }
+        .back-nav a::after { content: ' /'; margin-left: 8px; color: #a0aec0; }
+        
+        h1 { font-size: 2.2rem; color: #1a202c; margin-bottom: 10px; position: relative; padding-bottom: 15px; }
+        h1::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 3px; background-color: #b7791f; }
+        .subtitle { color: #718096; margin-bottom: 50px; font-size: 1.05rem; }
+        
+        /* 大量作品瀑布流/網格 */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 35px; }
+        .work-item { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 20px rgba(0,0,0,0.02); transition: 0.3s; }
+        .work-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .work-img { width: 100%; height: 260px; background-color: rgba(226, 232, 240, 0.4); overflow: hidden; }
+        .work-img img { width: 100%; height: 100%; object-fit: cover; }
+        .work-info { padding: 25px; }
+        .work-info h3 { font-size: 1.25rem; color: #1a202c; margin-bottom: 10px; }
+        .work-info p { color: #4a5568; font-size: 0.95rem; }
+        
+        footer { text-align: center; padding: 60px 0 20px 0; color: #a0aec0; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 返回首頁連結 -->
+        <div class="back-nav"><a href="index.html">首頁</a><span>品牌設計類別</span></div>
+        
+        <h1>品牌設計識別專區</h1>
+        <p class="subtitle">專注於挖掘品牌核心價值，透過幾何線條與色彩美學打造具備高辨識度的商業視覺標誌。</p>
+        
+        <!-- 設計師可以無限往下複製增添的作品卡片區 -->
+        <div class="work-grid">
+            <!-- 作品 1 -->
+            <div class="work-item">
+                <div class="work-img"><img src="IMG_5429.png" alt="Blue Bunny"></div>
+                <div class="work-info">
+                    <h3>Blue Bunny 品牌識別規劃</h3>
+                    <p>標準字設計、極簡兔子幾何標誌、全套配色規範（皇家經典藍）與社群媒體頭像應用範例。</p>
+                </div>
+            </div>
+            
+            <!-- 作品 2 (未來上傳新圖後，將 src="換成新圖檔名" 即可) -->
+            <div class="work-item">
+                <div class="work-img"><img src="IMG_5429.png" alt="作品2"></div>
+                <div class="work-info">
+                    <h3>客製化商業商標設計 02</h3>
+                    <p>依據客戶產業特性量身打造的完整 VI 識別系統，包含名片印刷與包裝外盒應用實錄。</p>
+                </div>
+            </div>
+
+            <!-- 作品 3 -->
+            <div class="work-item">
+                <div class="work-img"><img src="IMG_5429.png" alt="作品3"></div>
+                <div class="work-info">
+                    <h3>客製化商業商標設計 03</h3>
+                    <p>現代扁平化幾何視覺美學，適合新創品牌、微型電商與自由接案個人的核心形象建立。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>&copy; 2026 BLUE BUNNY Portfolio. All rights reserved.</footer>
+    </div>
+</body>
+</html>
