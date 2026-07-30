@@ -30,18 +30,13 @@
         .project-icon { width: 40px; height: 40px; background: #fef3c7; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 1.2rem; color: #b7791f; }
         .portfolio-section { padding: 100px 5%; background: transparent; }
         .portfolio-container { max-width: 1200px; margin: 0 auto; }
-        
-        /* 核心精簡優化：全新的首頁 3 大主項目預覽格子結構 */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
         .gallery-item { background: rgba(255,255,255,0.85); backdrop-filter: blur(5px); border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
         .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.06); border-color: #b7791f; }
         .gallery-img { width: 100%; height: 220px; background-color: rgba(226, 232, 240, 0.4); display: flex; align-items: center; justify-content: center; color: #a0aec0; position: relative; }
         .gallery-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
         .gallery-info { padding: 25px; position: relative; }
-        
-        /*作品卡片內小按鈕*/
         .view-more-link { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: #b7791f; font-weight: bold; text-decoration: none; border-bottom: 1px solid #b7791f; padding-bottom: 2px; }
-        
         .content-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .info-block h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2d3748; }
         .info-block p { color: #4a5568; margin-bottom: 25px; }
@@ -96,41 +91,39 @@
         </div>
     </div>
 
-    <!-- 2. 精選作品區（首頁僅保留三大分類預覽圖卡） -->
+    <!-- 2. 精選作品區（已成功建立所有跳轉連結） -->
     <section class="portfolio-section" id="portfolio">
         <div class="portfolio-container">
             <h2 class="section-title">精選作品分類</h2>
             <div class="gallery-grid">
                 
-                <!-- 項目 1：品牌設計項目 -->
+                <!-- 項目 1：品牌設計 -->
                 <div class="gallery-item">
                     <div class="gallery-img"><img src="IMG_5429.png" alt="作品"></div>
                     <div class="gallery-info">
                         <h4>品牌識別設計專區</h4>
                         <p>極簡線條、VI 規範與商標美學建立。</p>
-                        <!-- 核心串聯：點擊跳轉到專屬大量展示頁面 -->
                         <a href="brand.html" class="view-more-link">進入看全部作品 &rarr;</a>
                     </div>
                 </div>
                 
-                <!-- 項目 2：電商平面美學 -->
+                <!-- 項目 2：電商平面美學（連結已開通） -->
                 <div class="gallery-item">
                     <div class="gallery-img"><span>【電商設計大項目預覽圖】</span></div>
                     <div class="gallery-info">
                         <h4>電商平面美學專區</h4>
                         <p>商業橫幅、社群包月圖文與風格排貼。</p>
-                        <a href="#" class="view-more-link">即將開放 &rarr;</a>
+                        <a href="social.html" class="view-more-link">進入看全部作品 &rarr;</a>
                     </div>
                 </div>
                 
-                <!-- 項目 3：系統化視覺整合 -->
+                <!-- 項目 3：系統化視覺整合（連結已開通） -->
                 <div class="gallery-item">
-                    <div class="gallery-item">
                     <div class="gallery-img"><span>【系統化設計大項目預覽圖】</span></div>
                     <div class="gallery-info">
                         <h4>系統化視覺整合專區</h4>
                         <p>客製化整合風格、跨平台介面形態美學。</p>
-                        <a href="#" class="meview-more-link" onclick="alert('專區建立中')">建立中 &rarr;</a>
+                        <a href="system.html" class="view-more-link">進入看全部作品 &rarr;</a>
                     </div>
                 </div>
 
@@ -142,7 +135,7 @@
         <div class="content-inner">
             <div class="info-block">
                 <h2 class="section-title">關於我</h2>
-                <p>一位熱愛將複雜訊息「簡化」的美學視覺設計師。深信優秀的設計傾聽品牌靈魂，更是協助客戶提升價值的核心武器。</p>
+                <p>一位熱愛將複雜訊息「簡化」的美學視覺設計師。深信優秀的設計傾聽品牌靈魂，幕後協助客戶提升價值的核心武器。</p>
             </div>
             <div class="info-block">
                 <h2 class="section-title">核心服務與經歷</h2>
